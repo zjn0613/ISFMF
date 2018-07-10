@@ -1,23 +1,20 @@
-# Convolutional Matrix Factorization (ConvMF)
+# Image Shape Feature Matrix Factorization (ISFMF)
 
 ### Overview
-> Sparseness of user-to-item rating data is one of the major factors that deteriorate the quality of recommender system. To handle the sparsity problem, several recommendation techniques have been proposed that additionally consider auxiliary information to improve rating prediction accuracy. In particular, when rating data is sparse, document modeling-based approaches have improved the accuracy by additionally utilizing textual data such as reviews, abstracts, or synopses. However, due to the inherent limitation of the bag-of-words model, they have difficulties in effectively utilizing contextual information of the documents, which leads to shallow understanding of the documents. This paper proposes a novel context-aware recommendation model, convolutional matrix factorization (ConvMF) that integrates convolutional neural network (CNN) into probabilistic matrix factorization (PMF). Consequently, ConvMF captures contextual information of documents and further enhances the rating prediction accuracy.
+> Recommender system is an information-ﬁltering tool used in solving the problem that the user’s preference in information overload. In recent years, some algorithms have been combined with some side information (i.e., item description documents, user reviews, and social networks), and rating prediction accuracy has been signiﬁcantly improved. However, for fashionable goods, such as apparel and shoes that are important for designing, the contextual information of items is insufﬁcient, and their image shape feature should be considered. Currently, no such recommender system is available to use this feature of image shape. This study proposes a novel probabilistic model using the image shape feature that integrates a convolutional neural network into the probabilistic matrix factorization. The experiment conducted on two real-world datasets corroborates that our model outperforms the other recommendation models. 
 
 ### Paper
-- Convolutional Matrix Factorization for Document Context-Aware Recommendation (*RecSys 2016*)
-  - <a href="http://dm.postech.ac.kr/~cartopy" target="_blank">_**Donghyun Kim**_</a>, Chanyoung Park, Jinoh Oh, Seungyong Lee, Hwanjo Yu
-- Deep Hybrid Recommender Systems via Exploiting Document Context and Statistics of Items (*Information Sciences (SCI)*)
-   - <a href="http://dm.postech.ac.kr/~cartopy" target="_blank">_**Donghyun Kim**_</a>, Chanyoung Park, Jinoh Oh, Hwanjo Yu
+- Apparel Goods Recommender System-Based Image Shape Features Extracted by a CNN (*IEEE SMC 2018*)
+  - Yufeng Duan, Ryosuke Sage
 
 ### Requirements
 
-- Python 2.7
-- Keras 0.3.3
- - <a href="https://github.com/cartopy/keras-0.3.3" target="_blank">See installation instructions</a>
+- Python 3.5
+- Keras 2.0
 
 ### How to Run
 
-Note: Run `python <install_path>/run.py -h` in bash shell. You will see how to configure several parameters for ConvMF
+Note: Run `python <install_path>/run.py -h` in bash shell. You will see how to configure several parameters
 
 ### Configuration
 You can evaluate our model with different settings in terms of the size of dimension, the value of hyperparameter, the number of convolutional kernal, and etc. Below is a description of all the configurable parameters and their defaults:
