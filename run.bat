@@ -1,0 +1,1 @@
+python run.py -a data/m2 -d data/m2/0.2 -sm isf -u 1 -v 0.1 -o result/ISFMF/m2/0.2

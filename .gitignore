@@ -89,6 +89,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+data/
+result/
 
 # Spyder project settings
 .spyderproject
