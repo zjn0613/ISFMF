@@ -1,5 +1,4 @@
 import os
-os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/graphviz/bin/'
 import numpy as np
 np.random.seed(3934)
 
@@ -24,9 +23,6 @@ class ISF_module():
     def __init__(self, output_dimesion, image_size):
         super(ISF_module, self).__init__()
 
-        # cluster = tf.train.ClusterSpec({"ps": "157.16.204.230:2222", "worker": "157.16.204.236:2222"})
-        # server = tf.train.Server(cluster,job_name="worker",task_index=0)
-
         model = Sequential()
         model.add(Conv2D(8, (3, 3), activation='relu', padding='same', input_shape=(image_size, image_size, 1)))
         model.add(MaxPooling2D((2, 2)))
@@ -40,7 +36,6 @@ class ISF_module():
         model.add(Dense(output_dimesion, activation='tanh', name="FC2"))
         # model = multi_gpu_model(model, gpus=2)
         model.compile(loss='mse', optimizer='rmsprop')
-        # plot_model(model, to_file='model.png', show_shapes="true")
         self.model = model
 
     def load_model(self, model_path):
@@ -71,6 +66,3 @@ class ISF_module():
     def get_projection_layer(self, image):
         Y = self.model.predict(image, batch_size=len(image))
         return Y
-
-
-# ISF_module(50, 130)

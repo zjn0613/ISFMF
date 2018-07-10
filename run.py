@@ -53,7 +53,7 @@ parser.add_argument("-n", "--max_iter", type=int,
 parser.add_argument("-w", "--num_kernel_per_ws", type=int,
                     help="Number of kernels per window size for CNN module (default: 100)", default=100)
 parser.add_argument("-n", "--image_size", type=int,
-                    help="size of input images (default: 45)", default=45)
+                    help="size of input images (default: 130)", default=130)
 
 args = parser.parse_args()
 do_preprocess = args.do_preprocess
