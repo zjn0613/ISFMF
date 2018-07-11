@@ -3,6 +3,7 @@ import sys
 from data_manager import Data_Factory
 import numpy as np
 from PIL import Image
+# windows setting
 import win_unicode_console
 win_unicode_console.enable()
 
@@ -32,7 +33,7 @@ parser.add_argument("-d", "--data_path", type=str,
 parser.add_argument("-a", "--aux_path", type=str, help="Path to R, D_all sets")
 
 # Option for running model
-parser.add_argument("-sm", "--selected_model", type=str,
+parser.add_argument("-sm", "--select_model", type=str,
                     help="selected model")
 parser.add_argument("-o", "--res_dir", type=str,
                     help="Path to ConvMF's result")
@@ -90,7 +91,7 @@ if do_preprocess:
     data_factory.generate_train_valid_test_file_from_R(
         data_path, R, split_ratio)
 else:
-    selected_model = args.selected_model
+    select_model = args.select_model
     res_dir = args.res_dir
     emb_dim = args.emb_dim
     pretrain_w2v = args.pretrain_w2v
@@ -108,11 +109,11 @@ else:
         sys.exit("Argument missing - lambda_u is required")
     if lambda_v is None:
         sys.exit("Argument missing - lambda_v is required")
-    if selected_model is None:
-        sys.exit("Argument missing - selected_model is required")
+    if select_model is None:
+        sys.exit("Argument missing - select_model is required")
 
     print("===================================Model Option Setting===================================")
-    print("\tselected model - %s" % selected_model)
+    print("\tselected model - %s" % select_model)
     print("\taux path - %s" % aux_path)
     print("\tdata path - %s" % data_path)
     print("\tresult path - %s" % res_dir)
@@ -130,7 +131,7 @@ else:
     valid_user = data_factory.read_rating(data_path + '/valid_user.dat')
     test_user = data_factory.read_rating(data_path + '/test_user.dat')
 
-    if selected_model == "ConvMF":
+    if select_model == "ConvMF":
         from models import ConvMF
 
         if pretrain_w2v is None:
@@ -142,7 +143,7 @@ else:
         ConvMF(max_iter=max_iter, res_dir=res_dir,
                lambda_u=lambda_u, lambda_v=lambda_v, dimension=dimension, vocab_size=vocab_size, init_W=init_W, give_item_weight=give_item_weight, CNN_X=CNN_X, emb_dim=emb_dim, num_kernel_per_ws=num_kernel_per_ws,
                train_user=train_user, train_item=train_item, valid_user=valid_user, test_user=test_user, R=R)
-    elif selected_model == "pmf":
+    elif select_model == "PMF":
         from models import PMF
 
         PMF(res_dir=res_dir, train_user=train_user, train_item=train_item, valid_user=valid_user, test_user=test_user,
