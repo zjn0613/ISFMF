@@ -52,7 +52,7 @@ parser.add_argument("-n", "--max_iter", type=int,
                     help="Value of max iteration (default: 200)", default=200)
 parser.add_argument("-w", "--num_kernel_per_ws", type=int,
                     help="Number of kernels per window size for CNN module (default: 100)", default=100)
-parser.add_argument("-n", "--image_size", type=int,
+parser.add_argument("-is", "--image_size", type=int,
                     help="size of input images (default: 130)", default=130)
 
 args = parser.parse_args()
@@ -147,23 +147,6 @@ else:
 
         PMF(res_dir=res_dir, train_user=train_user, train_item=train_item, valid_user=valid_user, test_user=test_user,
             R=R, max_iter=max_iter, lambda_u=lambda_u, lambda_v=lambda_v, dimension=dimension)
-    elif selected_model == "ddf":
-        from models import DDFMF
-
-        # get Images
-        I_all = np.empty((len(ids), image_size, image_size, 3), dtype="float32")
-        num = 0
-        for item in ids:
-            img = Image.open("data/img/" + item + ".jpg")
-            arr = np.asarray(img, dtype="float32")
-            arr.resize((image_size, image_size, 3))
-            I_all[num, :, :, :] = arr
-            num += 1
-        print("Finish preprocessing Image data!")
-
-        DDFMF(max_iter=max_iter, res_dir=res_dir,
-              lambda_u=lambda_u, lambda_v=lambda_v, dimension=dimension, vocab_size=vocab_size, give_item_weight=give_item_weight, CNN_X=CNN_X, emb_dim=emb_dim, num_kernel_per_ws=num_kernel_per_ws,
-              train_user=train_user, train_item=train_item, valid_user=valid_user, test_user=test_user, R=R, images=I_all, image_size=image_size)
     else:
         from models import ISFMF
 
@@ -176,7 +159,7 @@ else:
             arr.resize((image_size, image_size, 3))
             I_all[num, :, :, :] = arr
             num += 1
-        print("Finish preprocessing Image data!")
+
         ISFMF(max_iter=max_iter, res_dir=res_dir,
               lambda_u=lambda_u, lambda_v=lambda_v, dimension=dimension, give_item_weight=give_item_weight,
               train_user=train_user, train_item=train_item, valid_user=valid_user, test_user=test_user, R=R, image=I_all, image_size=image_size)
