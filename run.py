@@ -152,12 +152,12 @@ else:
         from models import ISFMF
 
         # get Images
-        I_all = np.empty((len(ids), image_size, image_size, 3), dtype="float32")
+        I_all = np.empty((len(ids), image_size, image_size, 1), dtype="float32")
         num = 0
         for item in ids:
-            img = Image.open("data/img/" + item + ".jpg")
+            img = Image.open("data/img/" + item + ".png")
             arr = np.asarray(img, dtype="float32")
-            arr.resize((image_size, image_size, 3))
+            arr.resize((image_size, image_size, 1))
             I_all[num, :, :, :] = arr
             num += 1
 
