@@ -58,7 +58,7 @@ Parameter | Default
 8. `split_ratio`: 1-ratio, ratio/2 and ratio/2 of the entire dataset will be constructed as training, valid and test set, respectively.
 9. `data_path`: path to training, valid and test datasets.
 10. `aux_path`: path to R, D_all sets that are generated during the preprocessing step.
-11. `res_dir`: path to ConvMF's result
+11. `res_dir`: path to model's result
 12. `dimension`: the size of latent dimension for users and items.
 13. `lambda_u`: parameter of user regularizer.
 14. `lambda_v`: parameter of item regularizer.

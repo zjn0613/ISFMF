@@ -36,7 +36,7 @@ parser.add_argument("-a", "--aux_path", type=str, help="Path to R, D_all sets")
 parser.add_argument("-sm", "--select_model", type=str,
                     help="selected model")
 parser.add_argument("-o", "--res_dir", type=str,
-                    help="Path to ConvMF's result")
+                    help="Path to model's result")
 parser.add_argument("-e", "--emb_dim", type=int,
                     help="Size of latent dimension for word vectors (default: 200)", default=200)
 parser.add_argument("-p", "--pretrain_w2v", type=str,
@@ -52,7 +52,7 @@ parser.add_argument("-v", "--lambda_v", type=float,
 parser.add_argument("-n", "--max_iter", type=int,
                     help="Value of max iteration (default: 200)", default=200)
 parser.add_argument("-w", "--num_kernel_per_ws", type=int,
-                    help="Number of kernels per window size for CNN module (default: 100)", default=100)
+                    help="Number of kernels per window size for ConvMF's CNN module (default: 100)", default=100)
 parser.add_argument("-is", "--image_size", type=int,
                     help="size of input images (default: 130)", default=130)
 
